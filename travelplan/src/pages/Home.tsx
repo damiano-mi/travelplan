@@ -2,11 +2,12 @@ import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../context/userContext";
+import { useUserContext } from "../hooks/useUserContext";
 const SOURCE = "https://restcountries.com/v3.1/";
 
 export default function Home() {
     const { data: countries, isLoading, error } = useFetch(SOURCE + "all");
-    const [user] = useContext(UserContext);
+    const {user} = useUserContext();
     return (
         <div className="container d-flex justify-content-center">
             <div className="card mb-3 my-3" style={{ width: '70%' }}>
