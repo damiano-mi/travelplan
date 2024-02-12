@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom"
+import { useContext } from "react";
+import UserContext from "../context/userContext";
 
 export default function LogIn() {
+    const [user, setUser] = useContext(UserContext);
+
+    function handleSubmit(e : any){
+        e.preventDefault()
+    }
+
+    function handlePerson(e : any) {
+        setUser({...user,[e.target.name]: e.target.value});
+    }
 
     return (
         <div className="container">
@@ -9,10 +20,10 @@ export default function LogIn() {
                     <div className="card">
                         <div className="card-body">
                             <h5 className="card-title">Login</h5>
-                            <form onSubmit={e => e.preventDefault()}>
+                            <form onSubmit={(e) => handleSubmit(e)}>
                                 <div className="mb-3">
-                                    <label htmlFor="username" className="form-label">Username</label>
-                                    <input type="text" className="form-control" id="username" name="username" />
+                                    <label htmlFor="name" className="form-label" >Name</label>
+                                    <input type="text" className="form-control" id="name" name="name" value={user.name} onChange={handlePerson}/>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="password" className="form-label">Password</label>

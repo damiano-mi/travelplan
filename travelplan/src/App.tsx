@@ -1,14 +1,18 @@
 import { BrowserRouter, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import routes from "./components/routes";
+import { UserProvider } from "./context/userContext";
 
 export default function App() {
+
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        {routes}
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          {routes}
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
