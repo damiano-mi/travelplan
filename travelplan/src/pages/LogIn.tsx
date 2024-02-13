@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom"
-import { useContext } from "react";
-import UserContext from "../context/userContext";
+import { useUserContext } from "../hooks/useUserContext";
 
 export default function LogIn() {
-    const [user, setUser] = useContext(UserContext);
+    const {user, login} = useUserContext();
 
     function handleSubmit(e : any){
         e.preventDefault()
     }
 
     function handlePerson(e : any) {
-        setUser({...user,[e.target.name]: e.target.value});
+        login({...user,[e.target.name]: e.target.value});
     }
 
     return (
